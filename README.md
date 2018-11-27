@@ -39,7 +39,7 @@ DAMAGE.
 
 ## Pair Programming and SIP Process
 The product backlog googlesheet is at: [Product Backlog](https://drive.google.com/open?id=1GGu_NdKpPYwJQIi1h2X-HnGCWf6llKr8mGp2iHy4rJw)
-
+The sprint and review googledoc is at: [sprint and review](https://drive.google.com/open?id=1NWolqhI0ZdGPkRvtMio8TpJGyvjn2_onNdll_8KjDRM)
 
 
 
