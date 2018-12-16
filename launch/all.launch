@@ -1,4 +1,5 @@
 <launch>
+  
 
 
   <!-- ##################### VARRIABLE ############################# -->
@@ -75,6 +76,12 @@
   <!-- ######################### Move base ###################### -->
   <include file="$(arg move_base_launch_xml)"/>
   <!-- ########################################################## -->
+
+
+  <arg name="is_obs" default="disable"/>
+  <node name="spawn_object" pkg="gazebo_ros" type="spawn_model" 
+        args="-database coke_can -gazebo -model coke_can -x 0.5 -y 1.5" 
+        respawn="false" output="screen" if="$(eval is_obs == 'enable')" />
 
 
 </launch>
