@@ -1,12 +1,53 @@
+/**
+ * BSD 3 clauses Liscense
+ *
+ * Copyright <2018> <Chien-Te Lee> <Chin-Po Tsai>
+ *
+ * Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions 
+ * are met:
+ *
+ * 1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+ *
+ * 2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in 
+ * the documentation and/or other materials provided with the distribution.
+ *
+ * 3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from 
+ * this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT 
+ * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE 
+ * COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES 
+ * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) 
+ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
+
+/** @file test.cpp
+ *  @brief Implementation of unit test for rrt_planner plugin.
+ *  @copyright (c) 2018 Chien-Te Lee, Chin-Po Tsai
+ *  @author Chien-Te Lee, Chin-Po Tsai
+ *  @date   12/16/2018
+ *
+ *  This program implemnts unit test for methods of class vertex and rrtPlannerROS, and subscriber callback function of twist_to_wheel.
+ *  
+ */
+
 
 #include <ros/ros.h>
 #include <gtest/gtest.h>
 #include "rrt_global_planner_plugin.h"
 #include "twist_to_wheel.h"
 
-// ========== test vertex ==============//
 
-///< test setPosition, getPosition
+///< ========== test vertex methods ==============//
+
+/**
+ *  @brief This is a testcase for setPosition() and getPosition()
+ *  @param TESTVertex is the name of the test suite
+ *  @param testFunc1 is the name of the testcase
+ *  @return none
+ */
 TEST(TESTVertex, testFunc1) {
     vertex vtx;
 
@@ -15,7 +56,12 @@ TEST(TESTVertex, testFunc1) {
     EXPECT_EQ(p, vtx.getPosition());
 }
 
-///< test setParentIdx, getParentIdx
+/**
+ *  @brief This is a testcase for setParentIdx() and getParentIdx()
+ *  @param TESTVertex is the name of the test suite
+ *  @param testFunc2 is the name of the testcase
+ *  @return none
+ */
 TEST(TESTVertex, testFunc2) {
     vertex vtx;
 
@@ -24,7 +70,12 @@ TEST(TESTVertex, testFunc2) {
 
 }
 
-///< test setIdx, getIdx
+/**
+ *  @brief This is a testcase for setIdx() and getIdx()
+ *  @param TESTVertex is the name of the test suite
+ *  @param testFunc3 is the name of the testcase
+ *  @return none
+ */
 TEST(TESTVertex, testFunc3) {
     vertex vtx;
 
@@ -33,8 +84,14 @@ TEST(TESTVertex, testFunc3) {
 }
 
 
-// ========== test planner 1 ==============//
+// ========== test rrt_planner methods 1 ==============//
 
+/**
+ *  @brief This is a testcase for getCellIndex()
+ *  @param TESTRRTplanner is the name of the test suite
+ *  @param testFunc1 is the name of the testcase
+ *  @return none
+ */
 TEST(TESTRRTplanner, testFunc1) {
     int i = 3;
     int j = 4;
@@ -45,6 +102,12 @@ TEST(TESTRRTplanner, testFunc1) {
     EXPECT_EQ(34, planner.getCellIndex(i, j));
 }
 
+/**
+ *  @brief This is a testcase for getCellRowID()
+ *  @param TESTRRTplanner is the name of the test suite
+ *  @param testFunc2 is the name of the testcase
+ *  @return none
+ */
 TEST(TESTRRTplanner, testFunc2) {
     rrt_planner::rrtPlannerROS planner;
     planner.width = 10;
@@ -52,6 +115,12 @@ TEST(TESTRRTplanner, testFunc2) {
     EXPECT_EQ(11, planner.getCellRowID(116));
 }
 
+/**
+ *  @brief This is a testcase for getCellColID()
+ *  @param TESTRRTplanner is the name of the test suite
+ *  @param testFunc3 is the name of the testcase
+ *  @return none
+ */
 TEST(TESTRRTplanner, testFunc3) {
     rrt_planner::rrtPlannerROS planner;
     planner.width = 10;
@@ -59,8 +128,15 @@ TEST(TESTRRTplanner, testFunc3) {
     EXPECT_EQ(6, planner.getCellColID(116));
 }
 
-// ========== test planner 2 ==============//
 
+// ========== test rrt_planner methods 2 ==============//
+
+/**
+ *  @brief This is a testcase for getCorrdinate()
+ *  @param TESTRRTplanner is the name of the test suite
+ *  @param testFunc4 is the name of the testcase
+ *  @return none
+ */
 TEST(TESTRRTplanner, testFunc4) {
     float x = 12.5;
     float y = 7.3;
@@ -75,6 +151,12 @@ TEST(TESTRRTplanner, testFunc4) {
     EXPECT_EQ(4.5, y);
 }
 
+/**
+ *  @brief This is a testcase for convertToCellIndex()
+ *  @param TESTRRTplanner is the name of the test suite
+ *  @param testFunc5 is the name of the testcase
+ *  @return none
+ */
 TEST(TESTRRTplanner, testFunc5) {
     float x = 50.0;
     float y = 65.0;
@@ -86,7 +168,12 @@ TEST(TESTRRTplanner, testFunc5) {
     EXPECT_EQ(29, planner.convertToCellIndex(x, y));
 }
 
-
+/**
+ *  @brief This is a testcase for convertToCoordinate()
+ *  @param TESTRRTplanner is the name of the test suite
+ *  @param testFunc6 is the name of the testcase
+ *  @return none
+ */
 TEST(TESTRRTplanner, testFunc6) {
     int index = 125;
     float x = 0.0;
@@ -104,7 +191,12 @@ TEST(TESTRRTplanner, testFunc6) {
     EXPECT_EQ(63.0, y);
 }
 
-
+/**
+ *  @brief This is a testcase for isCellInsideMap()
+ *  @param TESTRRTplanner is the name of the test suite
+ *  @param testFunc7 is the name of the testcase
+ *  @return none
+ */
 TEST(TESTRRTplanner, testFunc7) {
     float x = 40.0;
     float y = 50.0;
@@ -118,8 +210,14 @@ TEST(TESTRRTplanner, testFunc7) {
 }
 
 
-// ========== test planner 3 ==============//
+// ========== test rrt_planner methods 3 ==============//
 
+/**
+ *  @brief This is a testcase for GetRandomPoint()
+ *  @param TESTRRTplanner is the name of the test suite
+ *  @param testFunc8 is the name of the testcase
+ *  @return none
+ */
 TEST(TESTRRTplanner, testFunc8) {
     rrt_planner::rrtPlannerROS planner;
     planner.height = 200;
@@ -133,7 +231,12 @@ TEST(TESTRRTplanner, testFunc8) {
     EXPECT_GE(p.second, 0.0);
 }
 
-
+/**
+ *  @brief This is a testcase for isFree()
+ *  @param TESTRRTplanner is the name of the test suite
+ *  @param testFunc9 is the name of the testcase
+ *  @return none
+ */
 TEST(TESTRRTplanner, testFunc9) {
   rrt_planner::rrtPlannerROS planner;
   planner.occupiedGridMap = new bool[100];
@@ -150,7 +253,12 @@ TEST(TESTRRTplanner, testFunc9) {
   EXPECT_FALSE(planner.isFree(56));
 }
 
-
+/**
+ *  @brief This is a testcase for isFree()
+ *  @param TESTRRTplanner is the name of the test suite
+ *  @param testFunc10 is the name of the testcase
+ *  @return none
+ */
 TEST(TESTRRTplanner, testFunc10) {
   rrt_planner::rrtPlannerROS planner;
   planner.width = 10;
@@ -168,7 +276,12 @@ TEST(TESTRRTplanner, testFunc10) {
   EXPECT_FALSE(planner.isFree(5, 6));
 }
 
-
+/**
+ *  @brief This is a testcase for isStartAndGoalCellsValid()
+ *  @param TESTRRTplanner is the name of the test suite
+ *  @param testFunc11 is the name of the testcase
+ *  @return none
+ */
 TEST(TESTRRTplanner, testFunc11) {
   rrt_planner::rrtPlannerROS planner;
   planner.width = 10;
@@ -186,7 +299,12 @@ TEST(TESTRRTplanner, testFunc11) {
   EXPECT_FALSE(planner.isStartAndGoalCellsValid(15, 65));
 }
 
-
+/**
+ *  @brief This is a testcase for rrtPlanner()
+ *  @param TESTRRTplanner is the name of the test suite
+ *  @param testFunc12 is the name of the testcase
+ *  @return none
+ */
 TEST(TESTRRTplanner, testFunc12) {
   rrt_planner::rrtPlannerROS planner;
   planner.height = 10;
@@ -207,8 +325,14 @@ TEST(TESTRRTplanner, testFunc12) {
 }
 
 
-// ========== test subscriber callback ===============//
+// ========== test twist to wheel callback function ===============//
 
+/**
+ *  @brief This is a testcase for subscriber callback funciton
+ *  @param TESTSubscriberCallback is the name of the test suite
+ *  @param testTwistCb is the name of the testcase
+ *  @return none
+ */
 TEST(TESTSubscriberCallback, testTwistCb) {
 
   geometry_msgs::Twist msg;
@@ -245,6 +369,12 @@ TEST(TESTSubscriberCallback, testTwistCb) {
 
 // ========== run all tests ==============//
 
+/**
+ *  @brief main fucntion to run all testcases
+ *  @param argc is the number of input argument
+ *  @param argv are the input arguments
+ *  @return 0 if all the tests are successful
+ */
 int main(int argc, char **argv) {
   ros::init(argc, argv, "plugin_rostest");
   ros::NodeHandle nh;
