@@ -238,19 +238,21 @@ TEST(TESTRRTplanner, testFunc8) {
  *  @return none
  */
 TEST(TESTRRTplanner, testFunc9) {
-  rrt_planner::rrtPlannerROS planner;
-  planner.occupiedGridMap = new bool[100];
+    rrt_planner::rrtPlannerROS planner;
+    planner.occupiedGridMap = new bool[100];
 
-  for(int i=0; i<100; i++){
-    if(i<50){
-      planner.occupiedGridMap[i] = true;
-    } else {
-      planner.occupiedGridMap[i] = false;
+    for(int i=0; i<100; i++){
+        if(i<50){
+            planner.occupiedGridMap[i] = true;
+        } else {
+            planner.occupiedGridMap[i] = false;
+        }
     }
-  }
 
-  EXPECT_TRUE(planner.isFree(10));
-  EXPECT_FALSE(planner.isFree(56));
+    EXPECT_TRUE(planner.isFree(10));
+    EXPECT_FALSE(planner.isFree(56));
+
+    delete planner.occupiedGridMap;
 }
 
 /**
@@ -260,20 +262,22 @@ TEST(TESTRRTplanner, testFunc9) {
  *  @return none
  */
 TEST(TESTRRTplanner, testFunc10) {
-  rrt_planner::rrtPlannerROS planner;
-  planner.width = 10;
-  planner.occupiedGridMap = new bool[100];
+    rrt_planner::rrtPlannerROS planner;
+    planner.width = 10;
+    planner.occupiedGridMap = new bool[100];
 
-  for(int i=0; i<100; i++){
-    if(i<50){
-      planner.occupiedGridMap[i] = true;
-    } else {
-      planner.occupiedGridMap[i] = false;
+    for(int i=0; i<100; i++){
+        if(i<50){
+            planner.occupiedGridMap[i] = true;
+        } else {
+            planner.occupiedGridMap[i] = false;
+        }
     }
-  }
 
-  EXPECT_TRUE(planner.isFree(1, 0));
-  EXPECT_FALSE(planner.isFree(5, 6));
+    EXPECT_TRUE(planner.isFree(1, 0));
+    EXPECT_FALSE(planner.isFree(5, 6));
+
+    delete planner.occupiedGridMap;
 }
 
 /**
@@ -283,20 +287,22 @@ TEST(TESTRRTplanner, testFunc10) {
  *  @return none
  */
 TEST(TESTRRTplanner, testFunc11) {
-  rrt_planner::rrtPlannerROS planner;
-  planner.width = 10;
-  planner.occupiedGridMap = new bool[100];
+    rrt_planner::rrtPlannerROS planner;
+    planner.width = 10;
+    planner.occupiedGridMap = new bool[100];
 
-  for(int i=0; i<100; i++){
-    if(i<50){
-      planner.occupiedGridMap[i] = true;
-    } else {
-      planner.occupiedGridMap[i] = false;
+    for(int i=0; i<100; i++){
+        if(i<50){
+            planner.occupiedGridMap[i] = true;
+        } else {
+            planner.occupiedGridMap[i] = false;
+        }
     }
-  }
 
-  EXPECT_TRUE(planner.isStartAndGoalCellsValid(15, 25));
-  EXPECT_FALSE(planner.isStartAndGoalCellsValid(15, 65));
+    EXPECT_TRUE(planner.isStartAndGoalCellsValid(15, 25));
+    EXPECT_FALSE(planner.isStartAndGoalCellsValid(15, 65));
+
+    delete planner.occupiedGridMap;
 }
 
 /**
@@ -306,22 +312,24 @@ TEST(TESTRRTplanner, testFunc11) {
  *  @return none
  */
 TEST(TESTRRTplanner, testFunc12) {
-  rrt_planner::rrtPlannerROS planner;
-  planner.height = 10;
-  planner.width = 10;
-  planner.occupiedGridMap = new bool[100];
+    rrt_planner::rrtPlannerROS planner;
+    planner.height = 10;
+    planner.width = 10;
+    planner.occupiedGridMap = new bool[100];
 
-  for(int i=0; i<100; i++){
-    if(i<50){
-      planner.occupiedGridMap[i] = true;
-    } else {
-      planner.occupiedGridMap[i] = false;
+    for(int i=0; i<100; i++){
+        if(i<50){
+            planner.occupiedGridMap[i] = true;
+        } else {
+            planner.occupiedGridMap[i] = false;
+        }
     }
-  }
 
-  std::vector<int> path = planner.rrtPlanner(1, 50);
+    std::vector<int> path = planner.rrtPlanner(1, 50);
 
-  EXPECT_GT(10, path.size());
+    EXPECT_GT(10, path.size());
+
+    delete planner.occupiedGridMap;
 }
 
 
@@ -335,32 +343,32 @@ TEST(TESTRRTplanner, testFunc12) {
  */
 TEST(TESTSubscriberCallback, testTwistCb) {
 
-  geometry_msgs::Twist msg;
-  msg.linear.x = 0.0;
-  msg.linear.y = 0.0;
-  msg.linear.z = 0.0;
-  msg.angular.x = 0.0;
-  msg.angular.y = 0.0;
-  msg.angular.z = 0.0;
+    geometry_msgs::Twist msg;
+    msg.linear.x = 0.0;
+    msg.linear.y = 0.0;
+    msg.linear.z = 0.0;
+    msg.angular.x = 0.0;
+    msg.angular.y = 0.0;
+    msg.angular.z = 0.0;
 
 
-  ros::NodeHandle nh;
-  ros::Publisher pub = nh.advertise<geometry_msgs::Twist>("/navigation_velocity_smoother/raw_cmd_vel", 5);
+    ros::NodeHandle nh;
+    ros::Publisher pub = nh.advertise<geometry_msgs::Twist>("/navigation_velocity_smoother/raw_cmd_vel", 5);
 
-  ///< run publisher and check publisher and subscriber
-  ros::WallDuration(5.0).sleep();
-  ros::spinOnce();
-  EXPECT_EQ(0, pub.getNumSubscribers());
-
-  ///< run subscriber and check publisher and subscriber 
-  ros::Subscriber sub = nh.subscribe("/navigation_velocity_smoother/raw_cmd_vel", 5, &twistCb);
-  for (int i=0; i<10; i++) {
-    pub.publish(msg);
-    ros::WallDuration(0.1).sleep();
+    ///< run publisher and check publisher and subscriber
+    ros::WallDuration(5.0).sleep();
     ros::spinOnce();
-  }
-  EXPECT_EQ(1, sub.getNumPublishers());
-  EXPECT_EQ(1, pub.getNumSubscribers());
+    EXPECT_EQ(0, pub.getNumSubscribers());
+
+    ///< run subscriber and check publisher and subscriber 
+    ros::Subscriber sub = nh.subscribe("/navigation_velocity_smoother/raw_cmd_vel", 5, &twistCb);
+    for (int i=0; i<10; i++) {
+        pub.publish(msg);
+        ros::WallDuration(0.1).sleep();
+        ros::spinOnce();
+    }
+    EXPECT_EQ(1, sub.getNumPublishers());
+    EXPECT_EQ(1, pub.getNumSubscribers());
 
 }
 
@@ -376,10 +384,10 @@ TEST(TESTSubscriberCallback, testTwistCb) {
  *  @return 0 if all the tests are successful
  */
 int main(int argc, char **argv) {
-  ros::init(argc, argv, "plugin_rostest");
-  ros::NodeHandle nh;
-  testing::InitGoogleTest(&argc, argv);
-  return RUN_ALL_TESTS();
+    ros::init(argc, argv, "plugin_rostest");
+    ros::NodeHandle nh;
+    testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
 }
 
 
