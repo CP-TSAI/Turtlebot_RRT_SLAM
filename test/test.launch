@@ -1,0 +1,4 @@
+<launch>
+  <test test-name="plugin_rostest" pkg="Turtlebot_RRT_SLAM"  type="plugin_rostest" time-limit="1000.0"/>
+</launch>
+
