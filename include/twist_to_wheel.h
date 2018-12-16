@@ -42,7 +42,11 @@
 #ifndef INCLUDE_TWIST_TO_WHEEL_H_
 #define INCLUDE_TWIST_TO_WHEEL_H_
 
-
+/**
+*   @brief tranform the msg to the velocity of both wheel
+*   @param msg
+*   @return void
+*/
 void twistCb(const geometry_msgs::TwistConstPtr &msg) {
   double transVelocity = msg->linear.x;
   double rotVelocity = msg->angular.z;

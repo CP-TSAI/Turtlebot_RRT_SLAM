@@ -85,20 +85,29 @@ class vertex {
     ///< the coordinate of the vertex
     std::pair<float, float> position;
 
-    ///< the parent index
+    ///< the parent index of the vertex
     int parentIdx = 0;
 
-    ///< the index of itself
+    ///< the index of the vertex
     int idx = 0;
+
  public:
-    ///< set the parameter of the vertex
+    ///< set the coordinate of the vertex
     void setPosition(float x, float y);
+
+    ///< set the parent index of the vertex
     void setParentIdx(int idx);
+
+    ///< set the index of the vertex
     void setIdx(int i);
 
-    ///< get the parameter of the matrix
+    ///< get the coordinate of the vertex
     std::pair<float, float> getPosition();
+
+    ///< get the parent index of the vertex
     int getParentIdx();
+
+    ///< get the index of the vertex
     int getIdx();
 };
 
@@ -110,9 +119,21 @@ class rrtPlannerROS : public nav_core::BaseGlobalPlanner {
     rrtPlannerROS();
     rrtPlannerROS(std::string name, costmap_2d::Costmap2DROS* costmap_ros);
 
-    ///< inherited function from ROS navigation stack
+    ///< the node handler
     ros::NodeHandle ROSNodeHandle;
+
+    /**
+    *   @brief This function initialize the planner, and use the information provided by pgm/yaml map file
+    *   @param name, costmap_ros
+    *   @return none
+    */
     void initialize(std::string name, costmap_2d::Costmap2DROS* costmap_ros);
+
+    /**
+    *   @brief This function works as the main function for calling planning algorithms
+    *   @param start, goal, plan
+    *   @return bool
+    */
     bool makePlan(const geometry_msgs::PoseStamped& start,
                   const geometry_msgs::PoseStamped& goal,
                   std::vector<geometry_msgs::PoseStamped>& plan);
@@ -121,32 +142,108 @@ class rrtPlannerROS : public nav_core::BaseGlobalPlanner {
     int width;
     int height;
     int mapSize;
+    float resolution;
+
+    ///< the obstacle map
     bool* occupiedGridMap;
+
+    ///< the origin coordinate
     float originX;
     float originY;
-    float resolution;
+
+    ///< the parameter of rrt algorithm
     double step_size_;
     double min_dist_from_robot_;
     bool initialized_;
+
+    ///< the map information
     costmap_2d::Costmap2DROS* costmap_ros_;
     costmap_2d::Costmap2D* costmap_;
 
-    ///< coordinate transformations
+    /**
+    *   @brief This function does coordinate shift
+    *   @param (x, y)
+    *   @return void
+    */
     void getCorrdinate(float& x, float& y);
+
+    /**
+    *   @brief This function does coordinate transform whth a resolution to get the cell index
+    *   @param (x, y)
+    *   @return int
+    */
     int convertToCellIndex(float x, float y);
+
+    /**
+    *   @brief This function does coordinate transform
+    *   @param (index, x, y)
+    *   @return void
+    */
     void convertToCoordinate(int index, float& x, float& y);
+
+    /**
+    *   @brief check if the point is inside map 
+    *   @param (x, y)
+    *   @return bool
+    */
     bool isCellInsideMap(float x, float y);
 
-    ///< planner
+    /**
+    *   @brief the core algorithm of rrt
+    *   @param startCell, goalCell
+    *   @return std::vector<int>
+    */
     std::vector<int> rrtPlanner(int startCell, int goalCell);
+
+    /**
+    *   @brief This function indicates if a start/goal point is valid
+    *   @param startCell/goalCell, the index of the occupiedGridMap
+    *   @return if the cell is free
+    */
     bool isStartAndGoalCellsValid(int startCell, int goalCell);
+
+
+    /**
+    *   @brief This function indicates if a grid is occupied
+    *   @param (i, j), the coordinate of the occupiedGridMap
+    *   @return if the cell is free
+    */
     bool isFree(int i, int j);
+
+    /**
+    *   @brief This function indicates if a grid is occupied
+    *   @param CellID, the index of the occupiedGridMap
+    *   @return if the cell is free
+    */
     bool isFree(int CellID);
+
+    /**
+    *   @brief get a random point in the map
+    *   @param void
+    *   @return pair<int, int>
+    */
     std::pair<int, int> GetRandomPoint();
 
-    ///< matrix notation transformation
+    /**
+    *   @brief get the array index by the matrix coordinate 
+    *   @param (i, j)
+    *   @return the index of the array
+    */
     int getCellIndex(int i, int j);
+
+
+    /**
+    *   @brief get the row of the matrix coordinate by array index
+    *   @param index
+    *   @return row of the matrix
+    */
     int getCellRowID(int index);
+
+    /**
+    *   @brief get the col of the matrix coordinate by array index
+    *   @param index
+    *   @return col of the matrix
+    */
     int getCellColID(int index);
 };
 };  // namespace rrt_planner

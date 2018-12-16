@@ -58,32 +58,27 @@
 PLUGINLIB_EXPORT_CLASS(rrt_planner::rrtPlannerROS, nav_core::BaseGlobalPlanner)
 
 
-///< class vertex mehtods
+///< vertex function implementation
 void vertex::setPosition(float x, float y) {
     position = std::make_pair(x, y);
 }
 
-///< class vertex mehtods
 void vertex::setParentIdx(int idx) {
     parentIdx = idx;
 }
 
-///< class vertex mehtods
 void vertex::setIdx(int i) {
     idx = i;
 }
 
-///< class vertex mehtods
 std::pair<float, float> vertex::getPosition() {
     return position;
 }
 
-///< class vertex mehtods
 int vertex::getParentIdx() {
     return parentIdx;
 }
 
-///< class vertex mehtods
 int vertex::getIdx() {
     return idx;
 }
@@ -100,11 +95,6 @@ namespace rrt_planner {
     }
 
 
-    /**
-    *   @brief This function initialize the planner, and use the information provided by pgm/yaml map file
-    *   @param name, costmap_ros
-    *   @return none
-    */
     void rrtPlannerROS::initialize(std::string name,
         costmap_2d::Costmap2DROS* costmap_ros) {
         if (!initialized_) {
@@ -141,11 +131,6 @@ namespace rrt_planner {
     }
 
 
-    /**
-    *   @brief This function works as the main function for calling planning algorithms
-    *   @param start, goal, plan
-    *   @return bool
-    */
     bool rrtPlannerROS::makePlan(const geometry_msgs::PoseStamped& start,
         const geometry_msgs::PoseStamped& goal,
         std::vector<geometry_msgs::PoseStamped>& plan) {
@@ -234,22 +219,12 @@ namespace rrt_planner {
     }
 
 
-    /**
-    *   @brief This function does coordinate shift
-    *   @param (x, y)
-    *   @return void
-    */
     void rrtPlannerROS::getCorrdinate(float& x, float& y) {
         x = x - originX;
         y = y - originY;
     }
 
 
-    /**
-    *   @brief This function does coordinate transform whth a resolution to get the cell index
-    *   @param (x, y)
-    *   @return int
-    */
     int rrtPlannerROS::convertToCellIndex(float x, float y) {
         int cellIndex;
         float newX = x / resolution;
@@ -258,12 +233,6 @@ namespace rrt_planner {
         return cellIndex;
     }
 
-
-    /**
-    *   @brief This function does coordinate transform
-    *   @param (index, x, y)
-    *   @return void
-    */
     void rrtPlannerROS::convertToCoordinate(int index, float& x, float& y) {
         x = getCellColID(index) * resolution;
         y = getCellRowID(index) * resolution;
@@ -272,11 +241,6 @@ namespace rrt_planner {
         y = y + originY;
     }
 
-    /**
-    *   @brief check if the point is inside map 
-    *   @param (x, y)
-    *   @return bool
-    */
     bool rrtPlannerROS::isCellInsideMap(float x, float y) {
         bool valid = true;
         if (x > (width * resolution) || y > (height * resolution))
@@ -284,11 +248,6 @@ namespace rrt_planner {
         return valid;
     }
 
-    /**
-    *   @brief get a random point in the map
-    *   @param void
-    *   @return pair<int, int>
-    */
     std::pair<int, int> rrtPlannerROS::GetRandomPoint() {
         thread_local unsigned int seed = time(NULL);
         int x = rand_r(&seed) % height;
@@ -296,12 +255,6 @@ namespace rrt_planner {
         return std::make_pair(x, y);
     }
 
-
-    /**
-    *   @brief the core algorithm of rrt
-    *   @param startCell, goalCell
-    *   @return std::vector<int>
-    */ 
     std::vector<int> rrtPlannerROS::rrtPlanner(int startCell, int goalCell) {
         int sampleNumber = 100000;
         int stepSize = 2;
@@ -322,7 +275,7 @@ namespace rrt_planner {
         for (int i = 0; i < sampleNumber; i++) {
             /**
             *   randomly choose a point in the map, 
-            *   with a small probab	ility to choose the destination point
+            *   with a small probability to choose the destination point
             */ 
             thread_local unsigned int seed = time(NULL);
             double prob = static_cast<double>(rand_r(&seed) / (RAND_MAX));
@@ -413,63 +366,30 @@ namespace rrt_planner {
         return bestPath;
     }
 
-
-    /**
-	*   @brief This function indicates if a start/goal point is valid
-	*   @param startCell/goalCell, the index of the occupiedGridMap
-	*   @return if the cell is free
-	*/
     bool rrtPlannerROS::isStartAndGoalCellsValid(int startCell, int goalCell) {
         return isFree(startCell) && isFree(goalCell);
     }
 
-    /**
-	*   @brief This function indicates if a grid is occupied
-	*   @param (i, j), the coordinate of the occupiedGridMap
-	*   @return if the cell is free
-	*/
     bool  rrtPlannerROS::isFree(int i, int j) {
         int CellID = getCellIndex(i, j);
         return occupiedGridMap[CellID];
     }
 
-    /**
-	*   @brief This function indicates if a grid is occupied
-	*   @param CellID, the index of the occupiedGridMap
-	*   @return if the cell is free
-	*/
     bool rrtPlannerROS::isFree(int CellID) {
         return occupiedGridMap[CellID];
     }
 
-
-    /**
-	*   @brief get the array index by the matrix coordinate 
-	*   @param (i, j)
-	*   @return the index of the array
-	*/
     int rrtPlannerROS::getCellIndex(int i, int j) {
         return (i * width) + j;
     }
 
-    /**
-	*   @brief get the row of the matrix coordinate by array index
-	*   @param index
-	*   @return row of the matrix
-	*/
     int rrtPlannerROS::getCellRowID(int index) {
         return index / width;
     }
 
-    /**
-	*   @brief get the col of the matrix coordinate by array index
-	*   @param index
-	*   @return col of the matrix
-	*/
     int rrtPlannerROS::getCellColID(int index) {
         return index % width;
     }
-
 };  // namespace rrt_planner
 
 
