@@ -9,7 +9,22 @@ project(Turtlebot_RRT_SLAM)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   roscpp
+  rospy
+  std_msgs
+  nav_core
+  move_base_msgs
+  base_local_planner
 )
+
+add_compile_options(-std=c++11)
+
+
+
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0") # debug, no optimisation
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --coverage") # enabling coverage
+
+
+
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -68,7 +83,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## Generate added messages and services with any dependencies listed here
 # generate_messages(
 #   DEPENDENCIES
-#   std_msgs  # Or other packages containing msgs
+#   std_msgs
 # )
 
 ################################################
@@ -103,7 +118,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES Turtlebot_RRT_SLAM
-#  CATKIN_DEPENDS roscpp
+#  CATKIN_DEPENDS nav_core roscpp rospy std_msgs
 #  DEPENDS system_lib
 )
 
@@ -114,9 +129,21 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
-# include
+  include
   ${catkin_INCLUDE_DIRS}
 )
+
+
+
+
+
+
+
+add_library(rrt_lib src/rrt_global_planner_plugin.cpp)
+
+
+
+
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
@@ -132,6 +159,11 @@ include_directories(
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
 # add_executable(${PROJECT_NAME}_node src/Turtlebot_RRT_SLAM_node.cpp)
+
+
+add_executable(ttw src/twist_to_wheel.cpp)
+add_dependencies(ttw ${catkin_EXPORTED_TARGETS})
+target_link_libraries(ttw ${catkin_LIBRARIES})
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -195,3 +227,11 @@ include_directories(
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
+
+
+if(CATKIN_ENABLE_TESTING)
+  find_package(rostest REQUIRED)
+  add_rostest_gtest(plugin_rostest test/test.launch test/test.cpp src/rrt_global_planner_plugin.cpp)
+  target_link_libraries(plugin_rostest ${catkin_LIBRARIES})
+endif()
+

@@ -26,15 +26,11 @@
     <arg name="initial_pose_a" value="$(arg initial_pose_a)"/>
   </include>
 
-
-
   <!-- Move base -->
   <arg name="custom_param_file" default="$(find turtlebot_navigation)/param/$(arg 3d_sensor)_costmap_params.yaml"/>
   <include file="$(find Turtlebot_RRT_SLAM)/launch/includes/move_base.launch.xml">
     <arg name="custom_param_file" value="$(arg custom_param_file)"/>
   </include>
-
-
 
 </launch>
 

@@ -19,8 +19,8 @@ base_local_planner: "dwa_local_planner/DWAPlannerROS"
 
 
 ########  sample code #######
-base_global_planner: "navfn/NavfnROS" #alternatives: global_planner/GlobalPlanner, carrot_planner/CarrotPlanner
-
+# base_global_planner: "navfn/NavfnROS" #alternatives: global_planner/GlobalPlanner, carrot_planner/CarrotPlanner
+base_global_planner: "rrt_planner/rrtPlannerROS" # self-built rrt global planner
 
 
 

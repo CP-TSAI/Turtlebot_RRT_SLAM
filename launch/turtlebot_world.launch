@@ -1,11 +1,6 @@
 <launch>
   <!-- <arg name="world_file"  default="$(env TURTLEBOT_GAZEBO_WORLD_FILE)"/> -->
-
-
-
-  <arg name="world_file"  default="$(find Turtlebot_RRT_SLAM)/world/wall_v4"/>
-
-  
+  <arg name="world_file"  default="$(find Turtlebot_RRT_SLAM)/map/wall_v4.sdf"/>
 
 
   <arg name="base"      value="$(optenv TURTLEBOT_BASE kobuki)"/> <!-- create, roomba -->

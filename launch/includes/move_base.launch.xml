@@ -15,7 +15,11 @@
   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
 
 
-  <!-- <param name="base_global_planner" value="RAstar_planner/RAstarPlannerROS"/> -->
+
+  <!-- ######################################################################## -->
+  <param name="base_global_planner" value="rrt_planner/rrtPlannerROS"/>
+    <rosparam file="$(find Turtlebot_RRT_SLAM)/param/move_base_params.yaml" command="load" />
+    <!-- ######################################################################## -->
 
 
     <rosparam file="$(find turtlebot_navigation)/param/costmap_common_params.yaml" command="load" ns="global_costmap" />
@@ -23,11 +27,6 @@
     <rosparam file="$(find turtlebot_navigation)/param/local_costmap_params.yaml" command="load" />   
     <rosparam file="$(find turtlebot_navigation)/param/global_costmap_params.yaml" command="load" />
     <rosparam file="$(find turtlebot_navigation)/param/dwa_local_planner_params.yaml" command="load" />
-
-
-    <rosparam file="$(find Turtlebot_RRT_SLAM)/param/move_base_params.yaml" command="load" />
-
-    
     <rosparam file="$(find turtlebot_navigation)/param/global_planner_params.yaml" command="load" />
     <rosparam file="$(find turtlebot_navigation)/param/navfn_global_planner_params.yaml" command="load" />
     <!-- external params file that could be loaded into the move_base namespace -->

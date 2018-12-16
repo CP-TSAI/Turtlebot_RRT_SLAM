@@ -1,0 +1,8 @@
+<library path="lib/rrt_lib">
+	<class name="rrt_planner/rrtPlannerROS" type="rrt_planner::rrtPlannerROS" base_class_type="nav_core::BaseGlobalPlanner">
+		<description>This is a rrt planner plugin for ENPM808X.</description>
+	</class>
+</library>
+
+
+
