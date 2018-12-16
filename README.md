@@ -42,6 +42,8 @@ DAMAGE.
 - CMake
 - ROS kinetic
 - TurtleBot
+- Gazebo
+- RViz
 
 ## Standard install via command-line
 - create catkin workspace
@@ -145,14 +147,14 @@ $ doxygen Doxygenfile
 
 
 ## Personnel
-- Chin-Po Tsai
+- Chin-Po Tsai  
 I am a robotics-majored 2nd year student, who wants to become a developer in Acme Robotics. 
 
-- Chien-Te Lee
+- Chien-Te Lee  
 A UMD robotics student taking ENPM808X course, hoping to acquire a researcher position in Acme Robotics Company. 
 
 ## Pair Programming and SIP Process
-The product backlog googlesheet is at: [Product Backlog](https://drive.google.com/open?id=1GGu_NdKpPYwJQIi1h2X-HnGCWf6llKr8mGp2iHy4rJw)
-The sprint planning notes and review is at googledoc: [sprint planning and review](https://drive.google.com/open?id=1NWolqhI0ZdGPkRvtMio8TpJGyvjn2_onNdll_8KjDRM)
+The product backlog googlesheet is at: [Product Backlog](https://drive.google.com/open?id=1GGu_NdKpPYwJQIi1h2X-HnGCWf6llKr8mGp2iHy4rJw).  
+The sprint planning notes and review is at googledoc: [sprint planning and review](https://drive.google.com/open?id=1NWolqhI0ZdGPkRvtMio8TpJGyvjn2_onNdll_8KjDRM).
 
 
