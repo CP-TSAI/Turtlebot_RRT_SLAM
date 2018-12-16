@@ -52,9 +52,6 @@
 #include <string>
 #include <vector>
 #include <map>
-#include <random>
-
-
 
 
 ///< register this planner as a BaseGlobalPlanner plugin
@@ -111,7 +108,6 @@ namespace rrt_planner {
     void rrtPlannerROS::initialize(std::string name,
         costmap_2d::Costmap2DROS* costmap_ros) {
         if (!initialized_) {
-            srand(time(NULL));
             costmap_ros_ = costmap_ros;
             costmap_ = costmap_ros_->getCostmap();
 
@@ -294,10 +290,9 @@ namespace rrt_planner {
     *   @return pair<int, int>
     */
     std::pair<int, int> rrtPlannerROS::GetRandomPoint() {
-        // int x = rand_r() % height;
-        // int y = rand_r() % width;
-        int x = rand() % height;
-        int y = rand() % width;
+        thread_local unsigned int seed = time(NULL);
+        int x = rand_r(&seed) % height;
+        int y = rand_r(&seed) % width;
         return std::make_pair(x, y);
     }
 
@@ -329,7 +324,9 @@ namespace rrt_planner {
             *   randomly choose a point in the map, 
             *   with a small probability to choose the destination point
             */ 
-            double prob = static_cast<double>(rand() / (RAND_MAX));
+            thread_local unsigned int seed = time(NULL);
+            int x = rand_r(&seed) % height;
+            double prob = static_cast<double>(rand_r(&seed) / (RAND_MAX));
             std::pair<int, int> q_rand;
             if (prob < prob_to_choose_dest)
                 q_rand = dest.getPosition();

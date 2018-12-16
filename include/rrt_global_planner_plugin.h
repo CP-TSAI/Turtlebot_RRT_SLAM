@@ -40,7 +40,6 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <netdb.h>
-
 #include <ros/ros.h>
 #include <actionlib/client/simple_action_client.h>
 #include <move_base_msgs/MoveBaseAction.h>
@@ -59,24 +58,20 @@
 #include <tf/tf.h>
 #include <tf/transform_datatypes.h>
 #include <tf/transform_listener.h>
-
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-
-#include <geometry_msgs/PoseStamped.h>
 #include <geometry_msgs/PoseWithCovarianceStamped.h>
 #include <move_base_msgs/MoveBaseGoal.h>
 #include <move_base_msgs/MoveBaseActionGoal.h>
-#include "sensor_msgs/LaserScan.h"
-#include "sensor_msgs/PointCloud2.h"
 #include <set>
 #include <string>
 #include <vector>
 #include <utility>
+#include <random>
+#include "sensor_msgs/LaserScan.h"
+#include "sensor_msgs/PointCloud2.h"
 #include <boost/foreach.hpp>
-
 
 #ifndef INCLUDE_RRT_GLOBAL_PLANNER_PLUGIN_H_
 #define INCLUDE_RRT_GLOBAL_PLANNER_PLUGIN_H_
@@ -150,9 +145,9 @@ class rrtPlannerROS : public nav_core::BaseGlobalPlanner {
     std::pair<int, int> GetRandomPoint();
 
     ///< matrix notation transformation
-    int getCellIndex(int i,int j);
+    int getCellIndex(int i, int j);
     int getCellRowID(int index);
     int getCellColID(int index);
 };
 };  // namespace rrt_planner
-#endif  // INCLUDE_RRT_GLOBAL_PLANNER_PLUGIN_H_" 
+#endif  // INCLUDE_RRT_GLOBAL_PLANNER_PLUGIN_H_"
