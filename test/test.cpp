@@ -2,135 +2,135 @@
 #include <ros/ros.h>
 #include <gtest/gtest.h>
 #include "rrt_global_planner_plugin.h"
-
+#include "twist_to_wheel.h"
 
 // ========== test vertex ==============//
 
 ///< test setPosition, getPosition
 TEST(TESTVertex, testFunc1) {
-  vertex vtx;
+    vertex vtx;
 
-  vtx.setPosition(10.4, 15.7);
-  std::pair<float, float> p = std::make_pair(10.4, 15.7);
-  EXPECT_EQ(p, vtx.getPosition());
+    vtx.setPosition(10.4, 15.7);
+    std::pair<float, float> p = std::make_pair(10.4, 15.7);
+    EXPECT_EQ(p, vtx.getPosition());
 }
 
 ///< test setParentIdx, getParentIdx
 TEST(TESTVertex, testFunc2) {
-  vertex vtx;
+    vertex vtx;
 
-  vtx.setParentIdx(5);
-  EXPECT_EQ(5, vtx.getParentIdx());
+    vtx.setParentIdx(5);
+    EXPECT_EQ(5, vtx.getParentIdx());
 
 }
 
 ///< test setIdx, getIdx
 TEST(TESTVertex, testFunc3) {
-  vertex vtx;
+    vertex vtx;
 
-  vtx.setIdx(2);
-  EXPECT_EQ(2, vtx.getIdx());
+    vtx.setIdx(2);
+    EXPECT_EQ(2, vtx.getIdx());
 }
 
 
 // ========== test planner 1 ==============//
 
 TEST(TESTRRTplanner, testFunc1) {
-  int i = 3;
-  int j = 4;
+    int i = 3;
+    int j = 4;
 
-  rrt_planner::rrtPlannerROS planner;
-  planner.width = 10;
+    rrt_planner::rrtPlannerROS planner;
+    planner.width = 10;
 
-  EXPECT_EQ(34, planner.getCellIndex(i, j));
+    EXPECT_EQ(34, planner.getCellIndex(i, j));
 }
 
 TEST(TESTRRTplanner, testFunc2) {
-  rrt_planner::rrtPlannerROS planner;
-  planner.width = 10;
+    rrt_planner::rrtPlannerROS planner;
+    planner.width = 10;
 
-  EXPECT_EQ(11, planner.getCellRowID(116));
+    EXPECT_EQ(11, planner.getCellRowID(116));
 }
 
 TEST(TESTRRTplanner, testFunc3) {
-  rrt_planner::rrtPlannerROS planner;
-  planner.width = 10;
+    rrt_planner::rrtPlannerROS planner;
+    planner.width = 10;
 
-  EXPECT_EQ(6, planner.getCellColID(116));
+    EXPECT_EQ(6, planner.getCellColID(116));
 }
 
 // ========== test planner 2 ==============//
 
 TEST(TESTRRTplanner, testFunc4) {
-  float x = 12.5;
-  float y = 7.3;
+    float x = 12.5;
+    float y = 7.3;
 
-  rrt_planner::rrtPlannerROS planner;
-  planner.originX = 2.5;
-  planner.originY = 2.8;
+    rrt_planner::rrtPlannerROS planner;
+    planner.originX = 2.5;
+    planner.originY = 2.8;
 
-  planner.getCorrdinate(x, y);
+    planner.getCorrdinate(x, y);
 
-  EXPECT_EQ(10.0, x);
-  EXPECT_EQ(4.5, y);
+    EXPECT_EQ(10.0, x);
+    EXPECT_EQ(4.5, y);
 }
 
 TEST(TESTRRTplanner, testFunc5) {
-  float x = 50.0;
-  float y = 65.0;
+    float x = 50.0;
+    float y = 65.0;
 
-  rrt_planner::rrtPlannerROS planner;
-  planner.width = 4;
-  planner.resolution = 10.0;
+    rrt_planner::rrtPlannerROS planner;
+    planner.width = 4;
+    planner.resolution = 10.0;
 
-  EXPECT_EQ(29, planner.convertToCellIndex(x, y));
+    EXPECT_EQ(29, planner.convertToCellIndex(x, y));
 }
 
 
 TEST(TESTRRTplanner, testFunc6) {
-  int index = 125;
-  float x = 0.0;
-  float y = 0.0;
+    int index = 125;
+    float x = 0.0;
+    float y = 0.0;
 
-  rrt_planner::rrtPlannerROS planner;
-  planner.originX = 2.5;
-  planner.originY = 3.0;
-  planner.width = 10;
-  planner.resolution = 5.0;
+    rrt_planner::rrtPlannerROS planner;
+    planner.originX = 2.5;
+    planner.originY = 3.0;
+    planner.width = 10;
+    planner.resolution = 5.0;
 
-  planner.convertToCoordinate(index, x, y);
+    planner.convertToCoordinate(index, x, y);
 
-  EXPECT_EQ(27.5, x);
-  EXPECT_EQ(63.0, y);
+    EXPECT_EQ(27.5, x);
+    EXPECT_EQ(63.0, y);
 }
 
 
 TEST(TESTRRTplanner, testFunc7) {
-  float x = 40.0;
-  float y = 50.0;
+    float x = 40.0;
+    float y = 50.0;
 
-  rrt_planner::rrtPlannerROS planner;
-  planner.height = 20;
-  planner.width = 10;
-  planner.resolution = 5.0;
+    rrt_planner::rrtPlannerROS planner;
+    planner.height = 20;
+    planner.width = 10;
+    planner.resolution = 5.0;
 
-  EXPECT_TRUE(planner.isCellInsideMap(x, y));
+    EXPECT_TRUE(planner.isCellInsideMap(x, y));
 }
 
 
 // ========== test planner 3 ==============//
 
 TEST(TESTRRTplanner, testFunc8) {
-  rrt_planner::rrtPlannerROS planner;
-  planner.height = 200;
-  planner.width = 150;
+    rrt_planner::rrtPlannerROS planner;
+    planner.height = 200;
+    planner.width = 150;
 
-  std::pair<float, float> p = planner.GetRandomPoint();
+    std::pair<float, float> p = planner.GetRandomPoint();
 
-  EXPECT_LT(p.first, 200.0);
-  EXPECT_GE(p.first, 0.0);
-  EXPECT_LT(p.second, 150.0);
-  EXPECT_GE(p.second, 0.0);
+    EXPECT_LT(p.first, 200.0);
+    EXPECT_GE(p.first, 0.0);
+    EXPECT_LT(p.second, 150.0);
+    EXPECT_GE(p.second, 0.0);
 }
 
 
@@ -205,6 +205,41 @@ TEST(TESTRRTplanner, testFunc12) {
 
   EXPECT_GT(10, path.size());
 }
+
+
+// ========== test subscriber callback ===============//
+
+TEST(TESTSubscriberCallback, testTwistCb) {
+
+  geometry_msgs::Twist msg;
+  msg.linear.x = 0.0;
+  msg.linear.y = 0.0;
+  msg.linear.z = 0.0;
+  msg.angular.x = 0.0;
+  msg.angular.y = 0.0;
+  msg.angular.z = 0.0;
+
+
+  ros::NodeHandle nh;
+  ros::Publisher pub = nh.advertise<geometry_msgs::Twist>("/navigation_velocity_smoother/raw_cmd_vel", 5);
+
+  ///< run publisher and check publisher and subscriber
+  ros::WallDuration(5.0).sleep();
+  ros::spinOnce();
+  EXPECT_EQ(0, pub.getNumSubscribers());
+
+  ///< run subscriber and check publisher and subscriber 
+  ros::Subscriber sub = nh.subscribe("/navigation_velocity_smoother/raw_cmd_vel", 5, &twistCb);
+  for (int i=0; i<10; i++) {
+    pub.publish(msg);
+    ros::WallDuration(0.1).sleep();
+    ros::spinOnce();
+  }
+  EXPECT_EQ(1, sub.getNumPublishers());
+  EXPECT_EQ(1, pub.getNumSubscribers());
+
+}
+
 
 
 
