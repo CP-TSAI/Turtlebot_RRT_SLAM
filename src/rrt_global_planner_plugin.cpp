@@ -322,10 +322,9 @@ namespace rrt_planner {
         for (int i = 0; i < sampleNumber; i++) {
             /**
             *   randomly choose a point in the map, 
-            *   with a small probability to choose the destination point
+            *   with a small probab	ility to choose the destination point
             */ 
             thread_local unsigned int seed = time(NULL);
-            int x = rand_r(&seed) % height;
             double prob = static_cast<double>(rand_r(&seed) / (RAND_MAX));
             std::pair<int, int> q_rand;
             if (prob < prob_to_choose_dest)
