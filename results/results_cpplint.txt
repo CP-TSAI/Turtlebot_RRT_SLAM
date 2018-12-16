@@ -1,0 +1,23 @@
+$ cpplint rrt_global_planner_plugin.h 
+rrt_global_planner_plugin.h:139:  Is this a non-const reference? If so, make const or use a pointer: std::vector<geometry_msgs::PoseStamped>& plan  [runtime/references] [2]
+rrt_global_planner_plugin.h:168:  Is this a non-const reference? If so, make const or use a pointer: float& x  [runtime/references] [2]
+rrt_global_planner_plugin.h:168:  Is this a non-const reference? If so, make const or use a pointer: float& y  [runtime/references] [2]
+rrt_global_planner_plugin.h:182:  Is this a non-const reference? If so, make const or use a pointer: float& x  [runtime/references] [2]
+rrt_global_planner_plugin.h:182:  Is this a non-const reference? If so, make const or use a pointer: float& y  [runtime/references] [2]
+Done processing rrt_global_planner_plugin.h
+Total errors found: 5
+
+
+$ cpplint twist_to_wheel.h 
+Done processing twist_to_wheel.h
+
+
+$ cpplint rrt_global_planner_plugin.cpp 
+Done processing rrt_global_planner_plugin.cpp
+
+
+$ cpplint twist_to_wheel.cpp 
+Done processing twist_to_wheel.cpp
+
+$ cpplint test.cpp 
+Done processing test.cpp
