@@ -1,0 +1,463 @@
+\hypertarget{test_8cpp}{}\section{/home/cptsai/catkin\+\_\+ws/src/\+E\+N\+P\+M808\+X/\+R\+O\+S/\+Turtlebot\+\_\+\+R\+R\+T\+\_\+\+S\+L\+A\+M/test/test.cpp File Reference}
+\label{test_8cpp}\index{/home/cptsai/catkin\+\_\+ws/src/\+E\+N\+P\+M808\+X/\+R\+O\+S/\+Turtlebot\+\_\+\+R\+R\+T\+\_\+\+S\+L\+A\+M/test/test.\+cpp@{/home/cptsai/catkin\+\_\+ws/src/\+E\+N\+P\+M808\+X/\+R\+O\+S/\+Turtlebot\+\_\+\+R\+R\+T\+\_\+\+S\+L\+A\+M/test/test.\+cpp}}
+
+
+Implementation of unit test for \hyperlink{namespacerrt__planner}{rrt\+\_\+planner} plugin.  
+
+
+{\ttfamily \#include $<$rrt\+\_\+global\+\_\+planner\+\_\+plugin.\+h$>$}\\*
+{\ttfamily \#include $<$twist\+\_\+to\+\_\+wheel.\+h$>$}\\*
+{\ttfamily \#include $<$ros/ros.\+h$>$}\\*
+{\ttfamily \#include $<$gtest/gtest.\+h$>$}\\*
+Include dependency graph for test.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{test_8cpp__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{test_8cpp_a6ec787d9c7462529350c125ead3218bd}{T\+E\+ST} (T\+E\+S\+T\+Vertex, test\+Func1)
+\begin{DoxyCompactList}\small\item\em $<$ ========== test vertex methods ==============// \end{DoxyCompactList}\item 
+\hyperlink{test_8cpp_abc59086b38c8968e951857ea43fe6450}{T\+E\+ST} (T\+E\+S\+T\+Vertex, test\+Func2)
+\begin{DoxyCompactList}\small\item\em This is a testcase for set\+Parent\+Idx() and get\+Parent\+Idx() \end{DoxyCompactList}\item 
+\hyperlink{test_8cpp_ad50c366c8e8772ef98cb3f745a788d89}{T\+E\+ST} (T\+E\+S\+T\+Vertex, test\+Func3)
+\begin{DoxyCompactList}\small\item\em This is a testcase for set\+Idx() and get\+Idx() \end{DoxyCompactList}\item 
+\hyperlink{test_8cpp_afba96da4893441721b87e71d8e82c669}{T\+E\+ST} (T\+E\+S\+T\+R\+R\+Tplanner, test\+Func1)
+\begin{DoxyCompactList}\small\item\em This is a testcase for get\+Cell\+Index() \end{DoxyCompactList}\item 
+\hyperlink{test_8cpp_a3ef17c0493415d4bf1d3dc5dcbc71500}{T\+E\+ST} (T\+E\+S\+T\+R\+R\+Tplanner, test\+Func2)
+\begin{DoxyCompactList}\small\item\em This is a testcase for get\+Cell\+Row\+I\+D() \end{DoxyCompactList}\item 
+\hyperlink{test_8cpp_a7ab65bc636fe161556e7de401c0279dd}{T\+E\+ST} (T\+E\+S\+T\+R\+R\+Tplanner, test\+Func3)
+\begin{DoxyCompactList}\small\item\em This is a testcase for get\+Cell\+Col\+I\+D() \end{DoxyCompactList}\item 
+\hyperlink{test_8cpp_a59e8e3c15b3e80b5aa31c54ea75a4589}{T\+E\+ST} (T\+E\+S\+T\+R\+R\+Tplanner, test\+Func4)
+\begin{DoxyCompactList}\small\item\em This is a testcase for get\+Corrdinate() \end{DoxyCompactList}\item 
+\hyperlink{test_8cpp_aecdcee1c5f30082ebbf27bb13e2dc7fb}{T\+E\+ST} (T\+E\+S\+T\+R\+R\+Tplanner, test\+Func5)
+\begin{DoxyCompactList}\small\item\em This is a testcase for convert\+To\+Cell\+Index() \end{DoxyCompactList}\item 
+\hyperlink{test_8cpp_ad3f2ec6e2929a51995ca77affecba969}{T\+E\+ST} (T\+E\+S\+T\+R\+R\+Tplanner, test\+Func6)
+\begin{DoxyCompactList}\small\item\em This is a testcase for convert\+To\+Coordinate() \end{DoxyCompactList}\item 
+\hyperlink{test_8cpp_a7caf067ee6e947f57c6ade24ecce4e7b}{T\+E\+ST} (T\+E\+S\+T\+R\+R\+Tplanner, test\+Func7)
+\begin{DoxyCompactList}\small\item\em This is a testcase for is\+Cell\+Inside\+Map() \end{DoxyCompactList}\item 
+\hyperlink{test_8cpp_ac1dcae23b2e4a9bd6794a1a28d0c106a}{T\+E\+ST} (T\+E\+S\+T\+R\+R\+Tplanner, test\+Func8)
+\begin{DoxyCompactList}\small\item\em This is a testcase for Get\+Random\+Point() \end{DoxyCompactList}\item 
+\hyperlink{test_8cpp_a14a83a4efade5aaf246ed76621435984}{T\+E\+ST} (T\+E\+S\+T\+R\+R\+Tplanner, test\+Func9)
+\begin{DoxyCompactList}\small\item\em This is a testcase for is\+Free() \end{DoxyCompactList}\item 
+\hyperlink{test_8cpp_a365aa4a86314d6e3cad85c04b6faa459}{T\+E\+ST} (T\+E\+S\+T\+R\+R\+Tplanner, test\+Func10)
+\begin{DoxyCompactList}\small\item\em This is a testcase for is\+Free() \end{DoxyCompactList}\item 
+\hyperlink{test_8cpp_a46815c7a9ebe47516cd17a5479d268a4}{T\+E\+ST} (T\+E\+S\+T\+R\+R\+Tplanner, test\+Func11)
+\begin{DoxyCompactList}\small\item\em This is a testcase for is\+Start\+And\+Goal\+Cells\+Valid() \end{DoxyCompactList}\item 
+\hyperlink{test_8cpp_a0a60afc7d7c45638769d2bf83e2aa3de}{T\+E\+ST} (T\+E\+S\+T\+R\+R\+Tplanner, test\+Func12)
+\begin{DoxyCompactList}\small\item\em This is a testcase for rrt\+Planner() \end{DoxyCompactList}\item 
+\hyperlink{test_8cpp_a05d10c5f97ef11d69a6bce47cbdacb0b}{T\+E\+ST} (T\+E\+S\+T\+Subscriber\+Callback, test\+Twist\+Cb)
+\begin{DoxyCompactList}\small\item\em This is a testcase for subscriber callback funciton. \end{DoxyCompactList}\item 
+int \hyperlink{test_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main} (int argc, char $\ast$$\ast$argv)
+\begin{DoxyCompactList}\small\item\em main fucntion to run all testcases \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Implementation of unit test for \hyperlink{namespacerrt__planner}{rrt\+\_\+planner} plugin. 
+
+B\+SD 3 clauses Liscense
+
+Copyright $<$2018$>$ $<$Chien-\/\+Te Lee$>$ $<$Chin-\/\+Po Tsai$>$
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met\+:
+
+
+\begin{DoxyEnumerate}
+\item Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+\item Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+\item Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+\end{DoxyEnumerate}
+
+T\+H\+IS S\+O\+F\+T\+W\+A\+RE IS P\+R\+O\+V\+I\+D\+ED BY T\+HE C\+O\+P\+Y\+R\+I\+G\+HT H\+O\+L\+D\+E\+RS A\+ND C\+O\+N\+T\+R\+I\+B\+U\+T\+O\+RS \char`\"{}\+A\+S I\+S\char`\"{} A\+ND A\+NY E\+X\+P\+R\+E\+SS OR I\+M\+P\+L\+I\+ED W\+A\+R\+R\+A\+N\+T\+I\+ES, I\+N\+C\+L\+U\+D\+I\+NG, B\+UT N\+OT L\+I\+M\+I\+T\+ED TO, T\+HE I\+M\+P\+L\+I\+ED W\+A\+R\+R\+A\+N\+T\+I\+ES OF M\+E\+R\+C\+H\+A\+N\+T\+A\+B\+I\+L\+I\+TY A\+ND F\+I\+T\+N\+E\+SS F\+OR A P\+A\+R\+T\+I\+C\+U\+L\+AR P\+U\+R\+P\+O\+SE A\+RE D\+I\+S\+C\+L\+A\+I\+M\+ED. IN NO E\+V\+E\+NT S\+H\+A\+LL T\+HE C\+O\+P\+Y\+R\+I\+G\+HT H\+O\+L\+D\+ER OR C\+O\+N\+T\+R\+I\+B\+U\+T\+O\+RS BE L\+I\+A\+B\+LE F\+OR A\+NY D\+I\+R\+E\+CT, I\+N\+D\+I\+R\+E\+CT, I\+N\+C\+I\+D\+E\+N\+T\+AL, S\+P\+E\+C\+I\+AL, E\+X\+E\+M\+P\+L\+A\+RY, OR C\+O\+N\+S\+E\+Q\+U\+E\+N\+T\+I\+AL D\+A\+M\+A\+G\+ES (I\+N\+C\+L\+U\+D\+I\+NG, B\+UT N\+OT L\+I\+M\+I\+T\+ED TO, P\+R\+O\+C\+U\+R\+E\+M\+E\+NT OF S\+U\+B\+S\+T\+I\+T\+U\+TE G\+O\+O\+DS OR S\+E\+R\+V\+I\+C\+ES; L\+O\+SS OF U\+SE, D\+A\+TA, OR P\+R\+O\+F\+I\+TS; OR B\+U\+S\+I\+N\+E\+SS I\+N\+T\+E\+R\+R\+U\+P\+T\+I\+ON) H\+O\+W\+E\+V\+ER C\+A\+U\+S\+ED A\+ND ON A\+NY T\+H\+E\+O\+RY OF L\+I\+A\+B\+I\+L\+I\+TY, W\+H\+E\+T\+H\+ER IN C\+O\+N\+T\+R\+A\+CT, S\+T\+R\+I\+CT L\+I\+A\+B\+I\+L\+I\+TY, OR T\+O\+RT (I\+N\+C\+L\+U\+D\+I\+NG N\+E\+G\+L\+I\+G\+E\+N\+CE OR O\+T\+H\+E\+R\+W\+I\+SE) A\+R\+I\+S\+I\+NG IN A\+NY W\+AY O\+UT OF T\+HE U\+SE OF T\+H\+IS S\+O\+F\+T\+W\+A\+RE, E\+V\+EN IF A\+D\+V\+I\+S\+ED OF T\+HE P\+O\+S\+S\+I\+B\+I\+L\+I\+TY OF S\+U\+CH D\+A\+M\+A\+GE. \begin{DoxyCopyright}{Copyright}
+(c) 2018 Chien-\/\+Te Lee, Chin-\/\+Po Tsai 
+\end{DoxyCopyright}
+\begin{DoxyAuthor}{Author}
+Chien-\/\+Te Lee, Chin-\/\+Po Tsai 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+12/16/2018
+\end{DoxyDate}
+This program implemnts unit test for methods of class vertex and rrt\+Planner\+R\+OS, and subscriber callback function of twist\+\_\+to\+\_\+wheel. 
+
+\subsection{Function Documentation}
+\index{test.\+cpp@{test.\+cpp}!main@{main}}
+\index{main@{main}!test.\+cpp@{test.\+cpp}}
+\subsubsection[{\texorpdfstring{main(int argc, char $\ast$$\ast$argv)}{main(int argc, char **argv)}}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{char $\ast$$\ast$}]{argv}
+\end{DoxyParamCaption}
+)}\hypertarget{test_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{}\label{test_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}
+
+
+main fucntion to run all testcases 
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & is the number of input argument \\
+\hline
+{\em argv} & are the input arguments \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if all the tests are successful 
+\end{DoxyReturn}
+\index{test.\+cpp@{test.\+cpp}!T\+E\+ST@{T\+E\+ST}}
+\index{T\+E\+ST@{T\+E\+ST}!test.\+cpp@{test.\+cpp}}
+\subsubsection[{\texorpdfstring{T\+E\+S\+T(\+T\+E\+S\+T\+Vertex, test\+Func1)}{TEST(TESTVertex, testFunc1)}}]{\setlength{\rightskip}{0pt plus 5cm}T\+E\+ST (
+\begin{DoxyParamCaption}
+\item[{T\+E\+S\+T\+Vertex}]{, }
+\item[{test\+Func1}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{test_8cpp_a6ec787d9c7462529350c125ead3218bd}{}\label{test_8cpp_a6ec787d9c7462529350c125ead3218bd}
+
+
+$<$ ========== test vertex methods ==============// 
+
+This is a testcase for set\+Position() and get\+Position() 
+\begin{DoxyParams}{Parameters}
+{\em T\+E\+S\+T\+Vertex} & is the name of the test suite \\
+\hline
+{\em test\+Func1} & is the name of the testcase \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\index{test.\+cpp@{test.\+cpp}!T\+E\+ST@{T\+E\+ST}}
+\index{T\+E\+ST@{T\+E\+ST}!test.\+cpp@{test.\+cpp}}
+\subsubsection[{\texorpdfstring{T\+E\+S\+T(\+T\+E\+S\+T\+Vertex, test\+Func2)}{TEST(TESTVertex, testFunc2)}}]{\setlength{\rightskip}{0pt plus 5cm}T\+E\+ST (
+\begin{DoxyParamCaption}
+\item[{T\+E\+S\+T\+Vertex}]{, }
+\item[{test\+Func2}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{test_8cpp_abc59086b38c8968e951857ea43fe6450}{}\label{test_8cpp_abc59086b38c8968e951857ea43fe6450}
+
+
+This is a testcase for set\+Parent\+Idx() and get\+Parent\+Idx() 
+
+
+\begin{DoxyParams}{Parameters}
+{\em T\+E\+S\+T\+Vertex} & is the name of the test suite \\
+\hline
+{\em test\+Func2} & is the name of the testcase \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\index{test.\+cpp@{test.\+cpp}!T\+E\+ST@{T\+E\+ST}}
+\index{T\+E\+ST@{T\+E\+ST}!test.\+cpp@{test.\+cpp}}
+\subsubsection[{\texorpdfstring{T\+E\+S\+T(\+T\+E\+S\+T\+Vertex, test\+Func3)}{TEST(TESTVertex, testFunc3)}}]{\setlength{\rightskip}{0pt plus 5cm}T\+E\+ST (
+\begin{DoxyParamCaption}
+\item[{T\+E\+S\+T\+Vertex}]{, }
+\item[{test\+Func3}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{test_8cpp_ad50c366c8e8772ef98cb3f745a788d89}{}\label{test_8cpp_ad50c366c8e8772ef98cb3f745a788d89}
+
+
+This is a testcase for set\+Idx() and get\+Idx() 
+
+
+\begin{DoxyParams}{Parameters}
+{\em T\+E\+S\+T\+Vertex} & is the name of the test suite \\
+\hline
+{\em test\+Func3} & is the name of the testcase \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\index{test.\+cpp@{test.\+cpp}!T\+E\+ST@{T\+E\+ST}}
+\index{T\+E\+ST@{T\+E\+ST}!test.\+cpp@{test.\+cpp}}
+\subsubsection[{\texorpdfstring{T\+E\+S\+T(\+T\+E\+S\+T\+R\+R\+Tplanner, test\+Func1)}{TEST(TESTRRTplanner, testFunc1)}}]{\setlength{\rightskip}{0pt plus 5cm}T\+E\+ST (
+\begin{DoxyParamCaption}
+\item[{T\+E\+S\+T\+R\+R\+Tplanner}]{, }
+\item[{test\+Func1}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{test_8cpp_afba96da4893441721b87e71d8e82c669}{}\label{test_8cpp_afba96da4893441721b87e71d8e82c669}
+
+
+This is a testcase for get\+Cell\+Index() 
+
+
+\begin{DoxyParams}{Parameters}
+{\em T\+E\+S\+T\+R\+R\+Tplanner} & is the name of the test suite \\
+\hline
+{\em test\+Func1} & is the name of the testcase \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\index{test.\+cpp@{test.\+cpp}!T\+E\+ST@{T\+E\+ST}}
+\index{T\+E\+ST@{T\+E\+ST}!test.\+cpp@{test.\+cpp}}
+\subsubsection[{\texorpdfstring{T\+E\+S\+T(\+T\+E\+S\+T\+R\+R\+Tplanner, test\+Func2)}{TEST(TESTRRTplanner, testFunc2)}}]{\setlength{\rightskip}{0pt plus 5cm}T\+E\+ST (
+\begin{DoxyParamCaption}
+\item[{T\+E\+S\+T\+R\+R\+Tplanner}]{, }
+\item[{test\+Func2}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{test_8cpp_a3ef17c0493415d4bf1d3dc5dcbc71500}{}\label{test_8cpp_a3ef17c0493415d4bf1d3dc5dcbc71500}
+
+
+This is a testcase for get\+Cell\+Row\+I\+D() 
+
+
+\begin{DoxyParams}{Parameters}
+{\em T\+E\+S\+T\+R\+R\+Tplanner} & is the name of the test suite \\
+\hline
+{\em test\+Func2} & is the name of the testcase \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\index{test.\+cpp@{test.\+cpp}!T\+E\+ST@{T\+E\+ST}}
+\index{T\+E\+ST@{T\+E\+ST}!test.\+cpp@{test.\+cpp}}
+\subsubsection[{\texorpdfstring{T\+E\+S\+T(\+T\+E\+S\+T\+R\+R\+Tplanner, test\+Func3)}{TEST(TESTRRTplanner, testFunc3)}}]{\setlength{\rightskip}{0pt plus 5cm}T\+E\+ST (
+\begin{DoxyParamCaption}
+\item[{T\+E\+S\+T\+R\+R\+Tplanner}]{, }
+\item[{test\+Func3}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{test_8cpp_a7ab65bc636fe161556e7de401c0279dd}{}\label{test_8cpp_a7ab65bc636fe161556e7de401c0279dd}
+
+
+This is a testcase for get\+Cell\+Col\+I\+D() 
+
+
+\begin{DoxyParams}{Parameters}
+{\em T\+E\+S\+T\+R\+R\+Tplanner} & is the name of the test suite \\
+\hline
+{\em test\+Func3} & is the name of the testcase \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\index{test.\+cpp@{test.\+cpp}!T\+E\+ST@{T\+E\+ST}}
+\index{T\+E\+ST@{T\+E\+ST}!test.\+cpp@{test.\+cpp}}
+\subsubsection[{\texorpdfstring{T\+E\+S\+T(\+T\+E\+S\+T\+R\+R\+Tplanner, test\+Func4)}{TEST(TESTRRTplanner, testFunc4)}}]{\setlength{\rightskip}{0pt plus 5cm}T\+E\+ST (
+\begin{DoxyParamCaption}
+\item[{T\+E\+S\+T\+R\+R\+Tplanner}]{, }
+\item[{test\+Func4}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{test_8cpp_a59e8e3c15b3e80b5aa31c54ea75a4589}{}\label{test_8cpp_a59e8e3c15b3e80b5aa31c54ea75a4589}
+
+
+This is a testcase for get\+Corrdinate() 
+
+
+\begin{DoxyParams}{Parameters}
+{\em T\+E\+S\+T\+R\+R\+Tplanner} & is the name of the test suite \\
+\hline
+{\em test\+Func4} & is the name of the testcase \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\index{test.\+cpp@{test.\+cpp}!T\+E\+ST@{T\+E\+ST}}
+\index{T\+E\+ST@{T\+E\+ST}!test.\+cpp@{test.\+cpp}}
+\subsubsection[{\texorpdfstring{T\+E\+S\+T(\+T\+E\+S\+T\+R\+R\+Tplanner, test\+Func5)}{TEST(TESTRRTplanner, testFunc5)}}]{\setlength{\rightskip}{0pt plus 5cm}T\+E\+ST (
+\begin{DoxyParamCaption}
+\item[{T\+E\+S\+T\+R\+R\+Tplanner}]{, }
+\item[{test\+Func5}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{test_8cpp_aecdcee1c5f30082ebbf27bb13e2dc7fb}{}\label{test_8cpp_aecdcee1c5f30082ebbf27bb13e2dc7fb}
+
+
+This is a testcase for convert\+To\+Cell\+Index() 
+
+
+\begin{DoxyParams}{Parameters}
+{\em T\+E\+S\+T\+R\+R\+Tplanner} & is the name of the test suite \\
+\hline
+{\em test\+Func5} & is the name of the testcase \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\index{test.\+cpp@{test.\+cpp}!T\+E\+ST@{T\+E\+ST}}
+\index{T\+E\+ST@{T\+E\+ST}!test.\+cpp@{test.\+cpp}}
+\subsubsection[{\texorpdfstring{T\+E\+S\+T(\+T\+E\+S\+T\+R\+R\+Tplanner, test\+Func6)}{TEST(TESTRRTplanner, testFunc6)}}]{\setlength{\rightskip}{0pt plus 5cm}T\+E\+ST (
+\begin{DoxyParamCaption}
+\item[{T\+E\+S\+T\+R\+R\+Tplanner}]{, }
+\item[{test\+Func6}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{test_8cpp_ad3f2ec6e2929a51995ca77affecba969}{}\label{test_8cpp_ad3f2ec6e2929a51995ca77affecba969}
+
+
+This is a testcase for convert\+To\+Coordinate() 
+
+
+\begin{DoxyParams}{Parameters}
+{\em T\+E\+S\+T\+R\+R\+Tplanner} & is the name of the test suite \\
+\hline
+{\em test\+Func6} & is the name of the testcase \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\index{test.\+cpp@{test.\+cpp}!T\+E\+ST@{T\+E\+ST}}
+\index{T\+E\+ST@{T\+E\+ST}!test.\+cpp@{test.\+cpp}}
+\subsubsection[{\texorpdfstring{T\+E\+S\+T(\+T\+E\+S\+T\+R\+R\+Tplanner, test\+Func7)}{TEST(TESTRRTplanner, testFunc7)}}]{\setlength{\rightskip}{0pt plus 5cm}T\+E\+ST (
+\begin{DoxyParamCaption}
+\item[{T\+E\+S\+T\+R\+R\+Tplanner}]{, }
+\item[{test\+Func7}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{test_8cpp_a7caf067ee6e947f57c6ade24ecce4e7b}{}\label{test_8cpp_a7caf067ee6e947f57c6ade24ecce4e7b}
+
+
+This is a testcase for is\+Cell\+Inside\+Map() 
+
+
+\begin{DoxyParams}{Parameters}
+{\em T\+E\+S\+T\+R\+R\+Tplanner} & is the name of the test suite \\
+\hline
+{\em test\+Func7} & is the name of the testcase \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\index{test.\+cpp@{test.\+cpp}!T\+E\+ST@{T\+E\+ST}}
+\index{T\+E\+ST@{T\+E\+ST}!test.\+cpp@{test.\+cpp}}
+\subsubsection[{\texorpdfstring{T\+E\+S\+T(\+T\+E\+S\+T\+R\+R\+Tplanner, test\+Func8)}{TEST(TESTRRTplanner, testFunc8)}}]{\setlength{\rightskip}{0pt plus 5cm}T\+E\+ST (
+\begin{DoxyParamCaption}
+\item[{T\+E\+S\+T\+R\+R\+Tplanner}]{, }
+\item[{test\+Func8}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{test_8cpp_ac1dcae23b2e4a9bd6794a1a28d0c106a}{}\label{test_8cpp_ac1dcae23b2e4a9bd6794a1a28d0c106a}
+
+
+This is a testcase for Get\+Random\+Point() 
+
+
+\begin{DoxyParams}{Parameters}
+{\em T\+E\+S\+T\+R\+R\+Tplanner} & is the name of the test suite \\
+\hline
+{\em test\+Func8} & is the name of the testcase \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\index{test.\+cpp@{test.\+cpp}!T\+E\+ST@{T\+E\+ST}}
+\index{T\+E\+ST@{T\+E\+ST}!test.\+cpp@{test.\+cpp}}
+\subsubsection[{\texorpdfstring{T\+E\+S\+T(\+T\+E\+S\+T\+R\+R\+Tplanner, test\+Func9)}{TEST(TESTRRTplanner, testFunc9)}}]{\setlength{\rightskip}{0pt plus 5cm}T\+E\+ST (
+\begin{DoxyParamCaption}
+\item[{T\+E\+S\+T\+R\+R\+Tplanner}]{, }
+\item[{test\+Func9}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{test_8cpp_a14a83a4efade5aaf246ed76621435984}{}\label{test_8cpp_a14a83a4efade5aaf246ed76621435984}
+
+
+This is a testcase for is\+Free() 
+
+
+\begin{DoxyParams}{Parameters}
+{\em T\+E\+S\+T\+R\+R\+Tplanner} & is the name of the test suite \\
+\hline
+{\em test\+Func9} & is the name of the testcase \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\index{test.\+cpp@{test.\+cpp}!T\+E\+ST@{T\+E\+ST}}
+\index{T\+E\+ST@{T\+E\+ST}!test.\+cpp@{test.\+cpp}}
+\subsubsection[{\texorpdfstring{T\+E\+S\+T(\+T\+E\+S\+T\+R\+R\+Tplanner, test\+Func10)}{TEST(TESTRRTplanner, testFunc10)}}]{\setlength{\rightskip}{0pt plus 5cm}T\+E\+ST (
+\begin{DoxyParamCaption}
+\item[{T\+E\+S\+T\+R\+R\+Tplanner}]{, }
+\item[{test\+Func10}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{test_8cpp_a365aa4a86314d6e3cad85c04b6faa459}{}\label{test_8cpp_a365aa4a86314d6e3cad85c04b6faa459}
+
+
+This is a testcase for is\+Free() 
+
+
+\begin{DoxyParams}{Parameters}
+{\em T\+E\+S\+T\+R\+R\+Tplanner} & is the name of the test suite \\
+\hline
+{\em test\+Func10} & is the name of the testcase \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\index{test.\+cpp@{test.\+cpp}!T\+E\+ST@{T\+E\+ST}}
+\index{T\+E\+ST@{T\+E\+ST}!test.\+cpp@{test.\+cpp}}
+\subsubsection[{\texorpdfstring{T\+E\+S\+T(\+T\+E\+S\+T\+R\+R\+Tplanner, test\+Func11)}{TEST(TESTRRTplanner, testFunc11)}}]{\setlength{\rightskip}{0pt plus 5cm}T\+E\+ST (
+\begin{DoxyParamCaption}
+\item[{T\+E\+S\+T\+R\+R\+Tplanner}]{, }
+\item[{test\+Func11}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{test_8cpp_a46815c7a9ebe47516cd17a5479d268a4}{}\label{test_8cpp_a46815c7a9ebe47516cd17a5479d268a4}
+
+
+This is a testcase for is\+Start\+And\+Goal\+Cells\+Valid() 
+
+
+\begin{DoxyParams}{Parameters}
+{\em T\+E\+S\+T\+R\+R\+Tplanner} & is the name of the test suite \\
+\hline
+{\em test\+Func11} & is the name of the testcase \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\index{test.\+cpp@{test.\+cpp}!T\+E\+ST@{T\+E\+ST}}
+\index{T\+E\+ST@{T\+E\+ST}!test.\+cpp@{test.\+cpp}}
+\subsubsection[{\texorpdfstring{T\+E\+S\+T(\+T\+E\+S\+T\+R\+R\+Tplanner, test\+Func12)}{TEST(TESTRRTplanner, testFunc12)}}]{\setlength{\rightskip}{0pt plus 5cm}T\+E\+ST (
+\begin{DoxyParamCaption}
+\item[{T\+E\+S\+T\+R\+R\+Tplanner}]{, }
+\item[{test\+Func12}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{test_8cpp_a0a60afc7d7c45638769d2bf83e2aa3de}{}\label{test_8cpp_a0a60afc7d7c45638769d2bf83e2aa3de}
+
+
+This is a testcase for rrt\+Planner() 
+
+
+\begin{DoxyParams}{Parameters}
+{\em T\+E\+S\+T\+R\+R\+Tplanner} & is the name of the test suite \\
+\hline
+{\em test\+Func12} & is the name of the testcase \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\index{test.\+cpp@{test.\+cpp}!T\+E\+ST@{T\+E\+ST}}
+\index{T\+E\+ST@{T\+E\+ST}!test.\+cpp@{test.\+cpp}}
+\subsubsection[{\texorpdfstring{T\+E\+S\+T(\+T\+E\+S\+T\+Subscriber\+Callback, test\+Twist\+Cb)}{TEST(TESTSubscriberCallback, testTwistCb)}}]{\setlength{\rightskip}{0pt plus 5cm}T\+E\+ST (
+\begin{DoxyParamCaption}
+\item[{T\+E\+S\+T\+Subscriber\+Callback}]{, }
+\item[{test\+Twist\+Cb}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{test_8cpp_a05d10c5f97ef11d69a6bce47cbdacb0b}{}\label{test_8cpp_a05d10c5f97ef11d69a6bce47cbdacb0b}
+
+
+This is a testcase for subscriber callback funciton. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em T\+E\+S\+T\+Subscriber\+Callback} & is the name of the test suite \\
+\hline
+{\em test\+Twist\+Cb} & is the name of the testcase \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+$<$ run publisher and check publisher and subscriber
+
+$<$ run subscriber and check publisher and subscriber 
