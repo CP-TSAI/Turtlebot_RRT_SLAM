@@ -35,9 +35,6 @@
  *  A RRT planner is implented under the global planner frame work 
 */
 
-#include <ros/console.h>
-#include <pluginlib/class_list_macros.h>
-#include <rrt_global_planner_plugin.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -50,9 +47,11 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
+#include <ros/console.h>
 #include <vector>
 #include <map>
-
+#include "rrt_global_planner_plugin.h"
+#include <pluginlib/class_list_macros.h>
 
 ///< register this planner as a BaseGlobalPlanner plugin
 PLUGINLIB_EXPORT_CLASS(rrt_planner::rrtPlannerROS, nav_core::BaseGlobalPlanner)
@@ -98,6 +97,7 @@ namespace rrt_planner {
     void rrtPlannerROS::initialize(std::string name,
         costmap_2d::Costmap2DROS* costmap_ros) {
         if (!initialized_) {
+            srand(time(NULL));
             costmap_ros_ = costmap_ros;
             costmap_ = costmap_ros_->getCostmap();
 
@@ -277,8 +277,7 @@ namespace rrt_planner {
             *   randomly choose a point in the map, 
             *   with a small probability to choose the destination point
             */ 
-            thread_local unsigned int seed = time(NULL);
-            double prob = static_cast<double>(rand_r(&seed) / (RAND_MAX));
+            double prob = (double) rand() / (RAND_MAX);
             std::pair<int, int> q_rand;
             if (prob < prob_to_choose_dest)
                 q_rand = dest.getPosition();
