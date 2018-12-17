@@ -5,7 +5,7 @@
 
 ## Overview
 In recent years, SLAM (Simultaneous Localization and Mapping) applications have been developed in mobile robots, autonomous cars, and drones. Given an unknown environment, the robot needs to know what the environment looks like, where it is in the environment, and how it can move from the current position to the target position without colliding with the obstacles. Next, it is crucial for the robot to be capable of moving in a dynamic environment, such as some moving or unpredictable obstacles not shown in the map.  
-In this project, a Turtlebot is utilized in an unknown environment simulated by Gazebo. The Turtlebot will perform SLAM for robot mapping and localization to build a 2D map, and then it will navigate using RRT(Rapidly-Exploring Random Tree) path planning algorithm.  
+In this project, a Turtlebot is exploring in an unknown environment simulated by Gazebo. We first use SLAM to build a 2D map for Turtlebot to run AMCL localization. Next, the Turtlebot will navigate in Gazebo environment using RRT(Rapidly-Exploring Random Tree) path planning algorithm. Moreover, we spawn a coke can as an unexpected obstacle for Turtlebot to avoid. Finally, we use a subscriber node to output wheel velocity of the Turtlebot.   
 The demo of this project contains 3 parts: (1) launching RRT planner plugin, (2) spawn coke can for unexpected obstacle, and (3) use a node (twist_to_wheel) to output the velocity. Launching RRT plugin using AMCL and self-implemented RRT plugin for global path planning. Next, spawning a coke can show RRT replanning for unexpected obastacle. Finally use a subscriber node to check wheel speed of Turtlebot.
 
 
@@ -157,4 +157,14 @@ A UMD robotics student taking ENPM808X course, hoping to acquire a researcher po
 The product backlog googlesheet is at: [Product Backlog](https://drive.google.com/open?id=1GGu_NdKpPYwJQIi1h2X-HnGCWf6llKr8mGp2iHy4rJw).  
 The sprint planning notes and review is at googledoc: [sprint planning and review](https://drive.google.com/open?id=1NWolqhI0ZdGPkRvtMio8TpJGyvjn2_onNdll_8KjDRM).
 
+## Presentation
 
+- [Power Point file](https://docs.google.com/presentation/d/1yzfVHWqFA2UFmxs-3oZu3o9SHaI5KFhRjaCeco7IOII/edit?usp=sharing)
+
+- Description of this project: [Presentation video](https://youtu.be/ybhsXg99vLc)
+
+- A simple RRT demo: [Turtlebot demo video 1](https://www.youtube.com/watch?v=rupK7FksiIM&feature=youtu.be)
+
+- Spawn coke can and planning demo: [Turtlebot demo video 2](https://www.youtube.com/watch?v=9H27fU-CqfI&feature=youtu.be)
+
+- Show the wheel velocity demo: [Turtlebot demo video 3](https://www.youtube.com/watch?v=8Xl9cwU-H28&feature=youtu.be)
